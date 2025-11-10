@@ -1,0 +1,13 @@
+<h3>Food Categories</h3>
+<div *ngFor="let foodCategory of categories" class="mb-3 p-3" style="background-color: #ffeeba; border-radius: 5px;">
+  <h5>{{ foodCategory.name }}</h5>
+  <div *ngIf="foodCategory.showItems; else hideItem">
+    <ul>
+      <li *ngFor="let item of foodCategory.varities">{{item}}</li>
+    </ul>
+  </div>
+  <ng-template #hideItem>
+    <p class="text-muted">There are no varieties present in this food category</p>
+  </ng-template>
+</div>
+
