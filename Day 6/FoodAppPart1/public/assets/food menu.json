@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Deluxe Veggie Pizza",
+    "description": "Loaded with fresh veggies and cheese",
+    "image": "../images/veg-pizza.jpg",
+    "price": 299
+  },
+  {
+    "id": 2,
+    "title": "Spicy Paneer Wrap",
+    "description": "Paneer with spicy sauces in a tortilla wrap",
+    "image": "../images/Paneer-wrap.jpg",
+    "price": 199
+  },
+  {
+    "id": 3,
+    "title": "Choco Lava Cake",
+    "description": "Warm chocolate cake with molten lava inside",
+    "image": "../images/choco-lava.jpg",
+    "price": 99
+  }
+]
