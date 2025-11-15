@@ -1,0 +1,44 @@
+<form #userForm = "ngForm" (ngSubmit)="onSubmit(userForm)">
+  <div>
+    <label>Name</label>
+    <input type="text" name="username" [(ngModel)]="user.name"  #uname="ngModel" required />
+    <p style="color:red" *ngIf="uname.invalid  && uname.touched">Name is mandatory</p>
+  </div>
+
+  <div>
+    <label>Email</label>
+    <input  type="email" [(ngModel)]="user.email" name="email" #uemail="ngModel"  pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required/>
+     
+    <p style="color:red" *ngIf="uemail.errors?.['required']  && uemail.touched">Email is mandatory</p>
+    <p style="color:red" *ngIf="uemail.errors?.['pattern']  && uemail.touched">Enter a valid email</p> 
+  </div>
+ 
+  <div>
+    <label>Password</label>
+    <input type="password" [(ngModel)]="user.password" #upwd="ngModel" name="passowrd" required minlength="6"/>
+    <p style="color:red" *ngIf="upwd?.errors?.['minlength'] && upwd.touched">Password should be minimum of 6 chars</p>
+    <p style="color:red" *ngIf="upwd?.errors?.['required'] && upwd.touched">Password is mandatory</p>
+  </div>
+
+  <div>
+    
+    <label>Gender</label>
+    <select name="gender" [(ngModel)]="user.gender" #ugender="ngModel" required>
+
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="transgender">Transgender</option>
+    </select>
+    <p style="color:red" *ngIf="ugender.invalid && ugender.touched">Gender is mandatory</p>
+  </div>
+  <div>
+ 
+    <input type="checkbox" name="terms" checked="false" #uterms="ngModel" [(ngModel)]="user.terms" required>
+    <label>Accept terms & conditions</label>
+    <p style="color:red" *ngIf="uterms.invalid && uterms.touched">Terms & conditions are mandatory to be checked</p>
+  </div>
+  <div>
+    
+    <input type="submit" value="Submit" [disabled]="userForm.invalid"/>
+  </div> 
+</form>

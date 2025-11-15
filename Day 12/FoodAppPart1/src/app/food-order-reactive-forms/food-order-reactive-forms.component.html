@@ -1,0 +1,60 @@
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label class="form-label"> Customer Name</label>
+    <input class="form-control" type="text" formControlName="customerName" />
+    <p style="color: red" *ngIf="customerName?.errors?.['required'] && customerName?.touched">
+      Customer Name should not be empty
+    </p>
+    <p style="color: red" *ngIf="customerName?.errors?.['hasNumber'] && customerName?.touched">
+      Customer Name should not contain numbers
+    </p>
+  </div>
+  <div>
+    <label class="form-label"> Email</label>
+    <input class="form-control" type="text" formControlName="email" />
+    <p style="color: red" *ngIf="email?.errors?.['required'] && email?.touched">
+      Email is mandatory
+    </p>
+    <p style="color: red" *ngIf="email?.errors?.['pattern']&& email?.touched">
+    Email pattern is not right
+    </p>
+  </div>
+  <div>
+    <label class="form-label"> Phone</label>
+    <input class="form-control" type="text" formControlName="phone"/>
+    <p style="color: red" *ngIf="phone?.errors?.['required']&& phone?.touched">
+      Phone number should not be empty
+    </p>
+    <p style="color: red" *ngIf="phone?.errors?.['pattern']&& phone?.touched">
+      Phone number should contain only numbers
+    </p>
+  </div>
+  <div>
+    <label class="form-label"> Address</label>
+    <input class="form-control" type="text" formControlName="address" />
+    <p style="color: red" *ngIf="address?.errors?.['required'] && address?.touched">
+      Address should not be empty
+    </p>
+  </div>
+  <div>
+    <label class="form-label"> Number of Items</label>
+    <input class="form-control" type="number" formControlName="noOfItems"/>
+    <p style="color: red" *ngIf="noOfItems?.errors?.['required'] && noOfItems?.touched">
+      Number of Items should not be empty
+    </p>
+    <p style="color: red" *ngIf="noOfItems?.errors?.['min'] && noOfItems?.touched">
+      Number of Items should minimum be 1
+    </p>
+    <p style="color: red" *ngIf="noOfItems?.errors?.['max'] && noOfItems?.touched">
+      Number of Items should maximum be 10
+    </p>
+  </div>
+  <div>
+    <label class="form-label"> Special Instruction</label>
+    <input class="form-control" type="text" formControlName="specialInstructions"/>
+  </div>
+  <!-- <input type="submit" (onClick)="printValues()" value="Submit"/> -->
+  <button class="btn btn-primary mt-3" type="submit" [disabled]="orderForm.invalid">Submit</button>
+</form>
+
+<br/><br/>

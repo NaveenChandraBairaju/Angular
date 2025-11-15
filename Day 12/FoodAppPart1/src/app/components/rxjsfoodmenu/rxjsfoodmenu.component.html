@@ -1,0 +1,37 @@
+<div class="container p-3">
+
+    <h2>Menu Items (Recipes)</h2>
+  
+    <!--Loading Spinner-->
+     <div *ngIf="loading" class="alert alert-info">
+      Loading menu items, please wait...
+    </div>
+  
+    <!-- Error Message -->
+     <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+   
+    <!-- Menu Items List -->
+   <div *ngIf="!loading && !errorMessage && (menuItems$ | async)?.length === 0" class="alert alert-warning">
+      No menu items available. 
+    </div>
+  
+    <div class="row">
+      <div *ngFor="let item of menuItems$ | async" class="col-md-4 mb-3">
+        <div class="card h-100">
+          <img [src]="item.image" class="card-img-top" alt="{{ item.name }}" />
+          <div class="card-body">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p><strong>Prep Time:</strong> {{ item.prepTimeMinutes }} mins</p>
+            <p><strong>Cook Time:</strong> {{ item.cookTimeMinutes }} mins</p>
+            <p><strong>Servings:</strong> {{ item.servings }}</p>
+            <p><strong>Rating:</strong> {{ item.rating }} ({{ item.reviewCount }} reviews)</p>
+            <p><strong>Cuisine:</strong> {{ item.cuisine }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
