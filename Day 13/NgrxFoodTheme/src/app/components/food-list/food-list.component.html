@@ -1,0 +1,9 @@
+<p><strong>Food Item List</strong></p>
+<ul>
+    <li *ngFor="let food of foodItems$ | async">
+      {{ food.name }} - ${{ food.price }}
+      <button (click)="remove(food.id)">Remove</button>
+    </li>
+  </ul>
+
+  <button (click)="addRandom()">Add Random Food</button>
