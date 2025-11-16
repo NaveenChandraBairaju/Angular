@@ -1,0 +1,32 @@
+<h2>Rate Your Food</h2>
+
+<mat-form-field appearance="fill" style="width: 70%">
+  <mat-label>Leave a comment</mat-label>
+  <textarea
+    matInput
+    [formControl]="commentControl"
+    placeholder="Tell us what you think"
+  ></textarea>
+</mat-form-field>
+
+<br /><br />
+
+<label>How would you rate it?</label>
+
+<mat-slider min="1" max="5" step="1" style="width: 20%">
+  <!-- Required syntax for Material Slider Thumb -->
+  <input
+    matSliderThumb
+    [formControl]="ratingControl"
+  />
+</mat-slider>
+
+<p>Rating: {{ ratingControl.value }}</p>
+
+<button
+  mat-raised-button
+  color="primary"
+  (click)="submitFeedback()"
+>
+  Submit
+</button>
